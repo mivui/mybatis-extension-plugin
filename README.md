@@ -1,8 +1,8 @@
-# mybatis-design
+# mybatis-dynamic-plugin
 [中文](./README.md) | [English](./ENGLISH.md)
 <br>
 <br>
-Mybatis Quick Design
+简介
 * 提供快速生成domain(entity),repository(dao),service,controller和CRUD操作
 * 注意:默认采用MyBatis3DynamicSql,mapper.xml被取缔，使用参考[官方](https://mybatis.org/mybatis-dynamic-sql/)
 * 注意:但可以单独使用LombokPlugin和DomainPlugin,将generatorConfig.xml中的targetRuntime替换为MyBatis3或MyBatis3Simple

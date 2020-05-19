@@ -1,8 +1,8 @@
-# mybatis-design
+# mybatis-dynamic-plugin
 [中文](./README.md) | [English](./ENGLISH.md)
 <br>
 <br>
-Mybatis Quick Design
+Introduction
 * Provide fast generation of domain (entity), repository (dao), service, controller and CRUD operations
 * Note: My Batis 3 Dynamic Sql is adopted by default, and mapper.xml is banned, use reference[官方](https://mybatis.org/mybatis-dynamic-sql/)
 * Note: But you can use Lombok Plugin and Domain Plugin separately, replace the target Runtime in generator Config.xml with My Batis 3 or My Batis 3 Simple
