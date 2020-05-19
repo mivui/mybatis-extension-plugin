@@ -16,24 +16,23 @@
         </plugin>
         <plugin type="com.github.uinios.mybatis.RepositoryPlugin">
             <property name="database" value="MySQL"/>
-            <property name="repository" value="com.cn.design.plugin.basic.repository.MybatisRepository"/>
+            <property name="repository" value="com.github.uinios.mybatis.MybatisRepository"/>
         </plugin>
         <plugin type="com.github.uinios.mybatis.ServicePlugin">
             <property name="disable" value="true"/>
             <property name="targetProject" value="src/main/java"/>
-            <property name="targetPackage" value="com.cn.design.core.service"/>
-            <property name="basicService" value="com.cn.design.plugin.basic.service.BaseService"/>
-            <property name="basicServiceImpl" value="com.cn.design.plugin.basic.service.BaseServiceImpl"/>
+            <property name="targetPackage" value="org.example.service"/>
+            <property name="basicService" value="com.github.uinios.mybatis.BaseService"/>
+            <property name="basicServiceImpl" value="com.github.uinios.mybatis.BaseServiceImpl"/>
         </plugin>
         <plugin type="com.github.uinios.mybatis.ControllerPlugin">
             <property name="disable" value="true"/>
             <property name="rest" value="true"/>
             <property name="targetProject" value="src/main/java"/>
-            <property name="targetPackage" value="com.cn.design.core.controller"/>
-            <property name="basicController" value="com.cn.design.plugin.basic.controller.BaseController"/>
+            <property name="targetPackage" value="org.example.controller"/>
+            <property name="basicController" value="com.github.uinios.mybatis.BaseController"/>
         </plugin>
         <commentGenerator>
-            <!-- 取消自动生成的注释 -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
@@ -41,25 +40,25 @@
                         userId="root"
                         password="123456"
         />
-        <!--类型处理-->
+        <!--typeProcessing-->
         <javaTypeResolver>
-            <!-- 数据库列的类型为DECIMAL或NUMERIC，则Java类型解析为java.math.BigDecimal -->
+            <!-- theTypeOfDatabaseColumnIsDECIMAL或NUMERIC，thenTheJavaTypeResolvesTo java.math.BigDecimal -->
             <property name="forceBigDecimals" value="true"/>
-            <!--使用jdk8日期类型-->
+            <!--useJdk8DateType-->
             <property name="useJSR310Types" value="true"/>
         </javaTypeResolver>
-        <!--实体类生成配置-->
-        <javaModelGenerator targetPackage="com.cn.design.core.domain" targetProject="src/main/java">
-            <!--根据数据库的schema再生成一层package,如果多个数据库改为true分目录-->
+        <!--entityClassGenerationConfiguration-->
+        <javaModelGenerator targetPackage="org.example.domain" targetProject="src/main/java">
+            <!--Generate another package based on the database schema, if multiple databases are changed to true, sub-directories-->
             <property name="enableSubPackages" value="false"/>
-            <!--String类型是否去除空字符-->
+            <!--whetherTheStringTypeRemovesNullCharacters-->
             <!--<property name="trimStrings" value="true"/>-->
         </javaModelGenerator>
-        <!--数据访问生成配置-->
-        <javaClientGenerator targetPackage="com.cn.design.core.repository" targetProject="src/main/java">
+        <!--dataAccessGenerationConfiguration-->
+        <javaClientGenerator targetPackage="org.example.repository" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
-        <!--表-->
+        <!--table-->
         <table tableName="sys_user" domainObjectName="User" mapperName="UserRepository">
             <generatedKey column="user_id" sqlStatement="select UUID()"/>
             <columnOverride column="enabled" javaType="boolean"
