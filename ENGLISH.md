@@ -50,7 +50,7 @@ Introduction
      ```xml
         <dependency>
             <groupId>com.github.uinios</groupId>
-            <artifactId>mybatis-dynamic-design</artifactId>
+            <artifactId>mybatis-dynamic-spring-boot-starter</artifactId>
             <version>1.0.2</version>
         </dependency>
       ```
@@ -87,7 +87,7 @@ Introduction
                           </dependency>
                            <dependency>
                               <groupId>com.github.uinios</groupId>
-                              <artifactId>mybatis-dynamic-design</artifactId>
+                              <artifactId>mybatis-dynamic-plugin</artifactId>
                               <version>1.0.2</version>
                             </dependency>
                       </dependencies>
