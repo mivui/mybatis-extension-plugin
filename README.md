@@ -68,7 +68,7 @@
   
 | property | defaults | introduction |
 |---------|--------|---------|
-| data | false | 包含getter,setter,toString,equalsAndHashCode,requiredArgsConstructor |
+| data | false | Contains getter,setter,toString,equalsAndHashCode,requiredArgsConstructor |
 | getter | false | getter |
 | setter | false | getter |
 | toString | false | toString |
@@ -155,9 +155,8 @@
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ControllerPlugin">
       <property name="rest" value="true"/>
-      <property name="zh_cn" value="true"/>
       <property name="targetProject" value="src/main/java"/>
-      <property name="targetPackage" value="com.zeta.selection.system.controller"/>
+      <property name="targetPackage" value="org.example.controller"/>
       <property name="respond" value="com.github.uinios.mybatis.basic.io.Respond"/>
   </plugin>
  ```
