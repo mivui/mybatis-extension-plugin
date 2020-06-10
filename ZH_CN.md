@@ -129,10 +129,10 @@
 
 | 属性 | 默认值 | 简介 |
 |---------|--------|---------|
-| targetProject | null | 生成路径例如:src/main/java |
-| targetPackage | null | 生成所在包路径例如:org.example.service |
-| basicService | null | service接口父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseService需添加依赖mybatis-dynamic-spring-boot-starter) |
-| basicServiceImpl | null | serviceImpl父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseServiceImpl需添加依赖mybatis-dynamic-spring-boot-starter) |
+| targetProject |  null  | 生成路径例如:src/main/java |
+| targetPackage |  null  | 生成所在包路径例如:org.example.service |
+| basicService |  null  | service接口父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseService需添加依赖mybatis-dynamic-spring-boot-starter) |
+| basicServiceImpl |  null  | serviceImpl父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseServiceImpl需添加依赖mybatis-dynamic-spring-boot-starter) |
  ##### 示例
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ServicePlugin">
@@ -147,11 +147,11 @@
 
 | 属性 | 默认值 | 简介 |
 |---------|--------|---------|
-| targetProject | null | 生成路径例如:src/main/java |
-| targetPackage | null | 生成所在包路径例如:org.example.controller |
-| rest | false | true为@RestController,false为@Controller |
-| respond | null | 返回结果集,复制[Respond](./docs/Respond.java)此类到项目中 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供Respond需添加依赖mybatis-dynamic-spring-boot-starter)  |
-| zh_cn | false | 对中文更好的扩展请设置为true  |
+| targetProject |  null   | 生成路径例如:src/main/java |
+| targetPackage |  null  | 生成所在包路径例如:org.example.controller |
+| rest |  false  | true为@RestController,false为@Controller |
+| respond |  null  | 返回结果集,复制[Respond](./docs/Respond.java)此类到项目中 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供Respond需添加依赖mybatis-dynamic-spring-boot-starter)  |
+| zh_cn |  false  | 对中文更好的扩展请设置为true  |
 ##### 示例
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ControllerPlugin">
