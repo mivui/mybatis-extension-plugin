@@ -1,4 +1,4 @@
-package com.github.uinios.mybatis;
+package com.github.uinios.mybatis.plugin;
 
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -8,17 +8,16 @@ import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.JavaVisibility;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.config.PropertyRegistry;
-import org.mybatis.generator.internal.util.StringUtility;
 
 import java.util.*;
+
+import static com.github.uinios.mybatis.plugin.utils.PluginUtils.primaryKeyType;
 
 /**
  * @author Jingle-Cat
  */
 
 public class ServicePlugin extends PluginAdapter {
-
-    private boolean disable = false;
 
     private String targetProject = null;
 
@@ -30,13 +29,12 @@ public class ServicePlugin extends PluginAdapter {
 
     @Override
     public boolean validate(List<String> warnings) {
-        return disable;
+        return true;
     }
 
     @Override
     public void setProperties(Properties properties) {
         super.setProperties(properties);
-        disable = StringUtility.isTrue(properties.getProperty("disable"));
         targetProject = properties.getProperty("targetProject");
         targetPackage = properties.getProperty("targetPackage");
         basicService = properties.getProperty("basicService");
@@ -65,9 +63,14 @@ public class ServicePlugin extends PluginAdapter {
                 //接口添加泛型格式BaseService<实体,主键类型>
                 serviceInterface.addImportedType(new FullyQualifiedJavaType(recordType));
                 interfacePackage.addTypeArgument(new FullyQualifiedJavaType(recordType));
-                FullyQualifiedJavaType primaryKey = PluginUtils.getPrimaryKey(introspectedTable);
-                serviceInterface.addImportedType(primaryKey);
-                interfacePackage.addTypeArgument(primaryKey);
+                Optional<FullyQualifiedJavaType> optional = primaryKeyType(introspectedTable);
+                if (optional.isPresent()) {
+                    FullyQualifiedJavaType javaType = optional.get();
+                    if (javaType.isExplicitlyImported()) {
+                        serviceInterface.addImportedType(javaType);
+                    }
+                    interfacePackage.addTypeArgument(javaType);
+                }
                 serviceInterface.addSuperInterface(interfacePackage);
                 GeneratedJavaFile javaFile = new GeneratedJavaFile(serviceInterface, targetProject,
                         context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING),
@@ -87,13 +90,15 @@ public class ServicePlugin extends PluginAdapter {
                 FullyQualifiedJavaType javaType = new FullyQualifiedJavaType(serviceImplPackage[serviceImplPackage.length - 1]);
                 serviceImplClass.addImportedType(recordType);
                 javaType.addTypeArgument(new FullyQualifiedJavaType(recordType));
-                FullyQualifiedJavaType primaryKey = PluginUtils.getPrimaryKey(introspectedTable);
-                serviceImplClass.addImportedType(primaryKey);
-                if (primaryKey.isExplicitlyImported()) {
-                    //Not the basic data type needs to guide package
-                    serviceImplClass.addImportedType(primaryKey);
+                Optional<FullyQualifiedJavaType> optional = primaryKeyType(introspectedTable);
+                if (optional.isPresent()) {
+                    FullyQualifiedJavaType qualifiedJavaType = optional.get();
+                    if (qualifiedJavaType.isExplicitlyImported()) {
+                        //Not the basic data type needs to guide package
+                        serviceImplClass.addImportedType(qualifiedJavaType);
+                    }
+                    javaType.addTypeArgument(qualifiedJavaType);
                 }
-                javaType.addTypeArgument(primaryKey);
                 serviceImplClass.setSuperClass(javaType);
                 //Add implementation class
                 serviceImplClass.addImportedType(servicePackage);

@@ -1,13 +1,13 @@
 # mybatis-dynamic-plugin
 [中文](./ZH_CN.md) | [English](./README.md)
-* Introduction
-  * Provide Entity, Dao extension。
-  * Provide Service, Controller generation。
-  * It is recommended to use mybatis-dynamic-sql to provide better functional support,mybatis-dynamic-sqlUse reference[Official](https://mybatis.org/mybatis-dynamic-sql/)
+* 简介
+  * 提供 Entity,Dao 扩展。
+  * 提供 Service,Controller 生成。
+  * 建议使用mybatis-dynamic-sql提供更好功能支持,mybatis-dynamic-sql使用参考[官方](https://mybatis.org/mybatis-dynamic-sql/)
 ------
-##### Add dependency (example)
+##### 添加依赖(示例)
 ```xml
-     <!-- The first time you need to download -->
+     <!-- 第一次使用需下载 -->
     <!-- <dependencies>
         <dependency>
             <groupId>com.github.uinios</groupId>
@@ -54,8 +54,8 @@
     </build>
 ```
 ------
-#### Plugin usage
-> Possible dependencies
+#### 插件使用
+> 可能使用到的依赖
 ```xml
  <dependency>
     <groupId>com.github.uinios</groupId>
@@ -64,9 +64,9 @@
  </dependency>
 ```
 
-> LombokPlugin (lombok generation)
+> LombokPlugin (lombok生成)
   
-| property | defaults | introduction |
+| 属性 | 默认值 | 简介 |
 |---------|--------|---------|
 | data | false | 包含getter,setter,toString,equalsAndHashCode,requiredArgsConstructor |
 | getter | false | getter |
@@ -78,7 +78,7 @@
 | allArgsConstructor | false | allArgsConstructor |
 | requiredArgsConstructor | false | requiredArgsConstructor |
 
-##### examples
+##### 示例
 ```xml
  <plugin type="com.github.uinios.mybatis.plugin.LombokPlugin">
     <property name="data" value="true"/>
@@ -89,15 +89,15 @@
 ```
 ------
 
-> DomainPlugin (Entity class extension)
+> DomainPlugin (实体类扩展)
 
-| property | defaults | introduction |
+| 属性 | 默认值 | 简介 |
 |---------|--------|---------|
-| serializable | false | Whether to implement Serializable |
-| dateSerialize | false | Date serialization only supports JDK 8 date types |
-| json | null | Date deserialization only supports JDK 8 date types(options: fastjon , jackson ) |
+| serializable | false | 是否实现Serializable |
+| dateSerialize | false | 日期序列化只支持JDK8日期类型 |
+| json | null | 日期反序列化只支持JDK8日期类型(选项: fastjon , jackson ) |
 
-##### Examples
+##### 示例
 ```xml
  <plugin type="com.github.uinios.mybatis.plugin.DomainPlugin">
     <property name="serializable" value="true"/>
@@ -106,17 +106,17 @@
  </plugin>
 ```
 ------
-> RepositoryPlugin (Data Access Object DAO Extension,Only support[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/))
+> RepositoryPlugin (数据访问对象DAO扩展,只支持[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/))
 
-| property | defaults | introduction |
+| 属性 | 默认值 | 简介 |
 |---------|--------|---------|
-| repository | null | Dao parent, By default, Mybatis Repository needs to add dependencies:mybatis-dynamic-spring-boot-starter |
-| uuid | null | New primary key uuid configuration(Options: true , false , uuid) true is 36 bits uuid , false is null, uuid is a 32-bit uuid  |
-| mysql | false |  mysql paging requires special handling  |
-| separationPackage | false |  Whether to split Dynamic Sql into separate packages  |
-##### examples
+| repository | null | Dao父类, 默认提供MybatisRepository需添加依赖:mybatis-dynamic-spring-boot-starter |
+| uuid | null | 新增主键uuid配置(选项: true , false , uuid) true为36位uuid , false为null , uuid为32位uuid  |
+| mysql | false |  mysql分页需要特殊处理  |
+| separationPackage | false |  是否拆分将DynamicSql拆分为单独的包  |
+##### 示例
 ```xml
- <!-- Only supports mybatis-dynamic-sql -->
+ <!-- 只支持mybatis-dynamic-sql -->
  <plugin type="com.github.uinios.mybatis.plugin.RepositoryPlugin">
    <property name="uuid" value="true"/>
    <property name="mysql" value="true"/>
@@ -125,15 +125,15 @@
  </plugin>
 ```
 ------
-> ServicePlugin (Service generation)
+> ServicePlugin (Service生成)
 
-| property | defaults | introduction |
+| 属性 | 默认值 | 简介 |
 |---------|--------|---------|
-| targetProject | null | Generate path example:src/main/java |
-| targetPackage | null | Generate package path example:org.example.service |
-| basicService | null | Service interface parent class (note:If using[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default, Base Service needs to add dependencies mybatis-dynamic-spring-boot-starter) |
-| basicServiceImpl | null | ServiceImplParent (note:If using[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default, Base Service Impl needs to add dependency mybatis-dynamic-spring-boot-starter) |
- ##### examples
+| targetProject | null | 生成路径例如:src/main/java |
+| targetPackage | null | 生成所在包路径例如:org.example.service |
+| basicService | null | service接口父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseService需添加依赖mybatis-dynamic-spring-boot-starter) |
+| basicServiceImpl | null | serviceImpl父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseServiceImpl需添加依赖mybatis-dynamic-spring-boot-starter) |
+ ##### 示例
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ServicePlugin">
      <property name="targetProject" value="src/main/java"/>
@@ -143,25 +143,26 @@
   </plugin>
  ```
 ------
-> ControllerPlugin (Controller generate)
+> ControllerPlugin (Controller生成)
 
-| property | defaults | introduction |
+| 属性 | 默认值 | 简介 |
 |---------|--------|---------|
-| targetProject | null | Generate path example:src/main/java |
-| targetPackage | null | Generate package path example:org.example.controller |
-| rest | false | true is @RestController,false is @Controller |
-| respond | null | Return to result set,copy [Respond](./docs/Respond.java)Into this project (Note: If you use[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default Respond needs to add dependenciesmybatis-dynamic-spring-boot-starter)  |
- ##### Examples
+| targetProject | null | 生成路径例如:src/main/java |
+| targetPackage | null | 生成所在包路径例如:org.example.controller |
+| rest | false | true为@RestController,false为@Controller |
+| respond | null | 返回结果集,复制[Respond](./docs/Respond.java)此类到项目中 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供Respond需添加依赖mybatis-dynamic-spring-boot-starter)  |
+| zh_cn | false | 对中文更好的扩展请设置为true  |
+##### 示例
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ControllerPlugin">
       <property name="rest" value="true"/>
       <property name="zh_cn" value="true"/>
       <property name="targetProject" value="src/main/java"/>
-      <property name="targetPackage" value="com.zeta.selection.system.controller"/>
+      <property name="targetPackage" value="org.example.controller"/>
       <property name="respond" value="com.github.uinios.mybatis.basic.io.Respond"/>
   </plugin>
  ```
 ------      
-> generate
- * Idea opens the right side maven->plugins->mybatis-generator->mybatis-generator:generator Click to execute
- * Or mvn mybatis-generator:generator  
+> 生成
+ * idea打开右侧maven->plugins->mybatis-generator->mybatis-generator:generator 点击执行  
+ * 或mvn mybatis-generator:generator  

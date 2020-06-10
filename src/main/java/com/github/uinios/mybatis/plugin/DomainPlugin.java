@@ -1,5 +1,6 @@
-package com.github.uinios.mybatis;
+package com.github.uinios.mybatis.plugin;
 
+import com.github.uinios.mybatis.plugin.normal.Json;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -14,6 +15,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
+import static com.github.uinios.mybatis.plugin.utils.PluginUtils.removeGeneratedAnnotation;
+
 /**
  * @author Jingle-Cat
  */
@@ -26,10 +29,6 @@ public class DomainPlugin extends PluginAdapter {
 
     private Json json = null;
 
-    enum Json {
-        fastjon,
-        jackson
-    }
 
     @Override
     public void setProperties(Properties properties) {
@@ -37,11 +36,7 @@ public class DomainPlugin extends PluginAdapter {
         serializable = StringUtility.isTrue(properties.getProperty("serializable"));
         dateSerialize = StringUtility.isTrue(properties.getProperty("dateSerialize"));
         String json = properties.getProperty("json");
-        if (Objects.equals(json, Json.fastjon.name())) {
-            this.json = Json.fastjon;
-        } else if (Objects.equals(json, Json.jackson.name())) {
-            this.json = Json.jackson;
-        }
+        this.json = Json.get(json);
     }
 
     @Override
@@ -51,6 +46,7 @@ public class DomainPlugin extends PluginAdapter {
 
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
+        removeGeneratedAnnotation(topLevelClass);
         if (serializable) {
             topLevelClass.addImportedType("java.io.Serializable");
             topLevelClass.addSuperInterface(new FullyQualifiedJavaType("Serializable"));
@@ -112,14 +108,14 @@ public class DomainPlugin extends PluginAdapter {
                 if (Objects.nonNull(json)) {
                     switch (json) {
                         case fastjon:
-                            field.addAnnotation("@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\")");
+                            field.addAnnotation("@JSONField(pattern=\"yyyy-MM-dd HH:mm:ss\")");
                             break;
                         case jackson:
-                            field.addAnnotation("@JSONField(pattern=\"yyyy-MM-dd HH:mm:ss\")");
+                            field.addAnnotation("@JsonFormat(pattern=\"yyyy-MM-dd HH:mm:ss\")");
                             break;
                     }
                 }
-                field.addAnnotation(" @DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                field.addAnnotation("@DateTimeFormat(pattern = \"yyyy-MM-dd HH:mm:ss\")");
             }
         }
         return true;
