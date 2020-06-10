@@ -1,6 +1,5 @@
 package com.github.uinios.mybatis.basic.io;
 
-
 import java.util.Objects;
 
 /**
