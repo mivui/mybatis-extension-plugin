@@ -12,7 +12,7 @@
         <dependency>
             <groupId>com.github.uinios</groupId>
             <artifactId>mybatis-dynamic-plugin</artifactId>
-            <version>1.5.1</version>
+            <version>1.5.2</version>
         </dependency>
     </dependencies> -->
 
@@ -46,7 +46,7 @@
                     <dependency>
                         <groupId>com.github.uinios</groupId>
                         <artifactId>mybatis-dynamic-plugin</artifactId>
-                        <version>1.5.1</version>
+                        <version>1.5.2</version>
                     </dependency>
                 </dependencies>
             </plugin>

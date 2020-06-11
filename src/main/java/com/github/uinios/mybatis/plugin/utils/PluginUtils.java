@@ -20,21 +20,25 @@ public class PluginUtils {
     }
 
     public static Optional<FullyQualifiedJavaType> primaryKeyType(IntrospectedTable introspectedTable) {
-        String primaryKey = introspectedTable.getGeneratedKey().getColumn();
-        Optional<IntrospectedColumn> optional = introspectedTable.getColumn(primaryKey);
-        if (optional.isPresent()) {
-            IntrospectedColumn keyColumn = optional.get();
-            return Optional.ofNullable(keyColumn.getFullyQualifiedJavaType());
+        if (Objects.nonNull(introspectedTable.getGeneratedKey())) {
+            String primaryKey = introspectedTable.getGeneratedKey().getColumn();
+            Optional<IntrospectedColumn> optional = introspectedTable.getColumn(primaryKey);
+            if (optional.isPresent()) {
+                IntrospectedColumn keyColumn = optional.get();
+                return Optional.ofNullable(keyColumn.getFullyQualifiedJavaType());
+            }
         }
         return Optional.empty();
     }
 
     public static Optional<String> primaryKeyName(IntrospectedTable introspectedTable) {
-        String primaryKey = introspectedTable.getGeneratedKey().getColumn();
-        Optional<IntrospectedColumn> optional = introspectedTable.getColumn(primaryKey);
-        if (optional.isPresent()) {
-            IntrospectedColumn keyColumn = optional.get();
-            return Optional.ofNullable(keyColumn.getJavaProperty());
+        if (Objects.nonNull(introspectedTable.getGeneratedKey())) {
+            String primaryKey = introspectedTable.getGeneratedKey().getColumn();
+            Optional<IntrospectedColumn> optional = introspectedTable.getColumn(primaryKey);
+            if (optional.isPresent()) {
+                IntrospectedColumn keyColumn = optional.get();
+                return Optional.ofNullable(keyColumn.getJavaProperty());
+            }
         }
         return Optional.empty();
     }

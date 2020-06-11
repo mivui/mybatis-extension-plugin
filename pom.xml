@@ -5,7 +5,7 @@
 
     <groupId>com.github.uinios</groupId>
     <artifactId>mybatis-dynamic-plugin</artifactId>
-    <version>1.5.1</version>
+    <version>1.5.2</version>
     <name>mybatis-dynamic-plugin</name>
     <description>mybatis-dynamic-plugin</description>
     <url>https://github.com/uinios/mybatis-dynamic-plugin</url>
