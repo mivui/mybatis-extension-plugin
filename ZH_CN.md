@@ -1,7 +1,7 @@
 # mybatis-dynamic-plugin
 [中文](./ZH_CN.md) | [English](./README.md)
 * 简介
-  * 注意:需要先学习mybatis-generator-maven-plugin的使用链接：http://mybatis.org/generator/running/runningWithMaven.html
+  * 注意:需要先学习mybatis-generator-maven-plugin的使用,链接: http://mybatis.org/generator/running/runningWithMaven.html
   * 提供 Entity,Dao 扩展。
   * 提供 Service,Controller 生成。
   * 建议使用mybatis-dynamic-sql提供更好功能支持,mybatis-dynamic-sql使用参考[官方](https://mybatis.org/mybatis-dynamic-sql/)
