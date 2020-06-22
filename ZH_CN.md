@@ -119,7 +119,7 @@
 | mysql | false |  mysql分页需要特殊处理  |
 | separationPackage | false |  是否拆分将DynamicSql拆分为单独的包  |
 ##### 示例
-* \<plugin>元素是\<context>元素的子 元素。可以在上下文中指定任意数量的插件。
+* \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
 ```xml
  <!-- 只支持mybatis-dynamic-sql -->
  <plugin type="com.github.uinios.mybatis.plugin.RepositoryPlugin">
@@ -139,7 +139,7 @@
 | basicService |  null  | service接口父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseService需添加依赖mybatis-dynamic-spring-boot-starter) |
 | basicServiceImpl |  null  | serviceImpl父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseServiceImpl需添加依赖mybatis-dynamic-spring-boot-starter) |
  ##### 示例
- * \<plugin>元素是\<context>元素的子 元素。可以在上下文中指定任意数量的插件。
+ * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ServicePlugin">
      <property name="targetProject" value="src/main/java"/>
@@ -159,7 +159,7 @@
 | respond |  null  | 返回结果集,复制[Respond](./docs/Respond.java)此类到项目中 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供Respond需添加依赖mybatis-dynamic-spring-boot-starter)  |
 | zh_cn |  false  | 对中文更好的扩展请设置为true  |
 ##### 示例
-* \<plugin>元素是\<context>元素的子 元素。可以在上下文中指定任意数量的插件。
+* \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ControllerPlugin">
       <property name="rest" value="true"/>
