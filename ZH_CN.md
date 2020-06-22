@@ -101,7 +101,7 @@
 | json | null | 日期反序列化只支持JDK8日期类型(选项: fastjon , jackson ) |
 
 ##### 示例
-* \<plugin>元素是\<context>元素的子 元素。可以在上下文中指定任意数量的插件。
+* \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
 ```xml
  <plugin type="com.github.uinios.mybatis.plugin.DomainPlugin">
     <property name="serializable" value="true"/>
