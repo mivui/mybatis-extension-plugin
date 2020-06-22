@@ -81,7 +81,7 @@
 | requiredArgsConstructor | false | requiredArgsConstructor |
 
 ##### examples
- * The <plugin> element is a child element of the <context> element. Any number of plugins can be specified in the context.
+ * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
 ```xml
  <plugin type="com.github.uinios.mybatis.plugin.LombokPlugin">
     <property name="data" value="true"/>
@@ -101,7 +101,7 @@
 | json | null | Date deserialization only supports JDK 8 date types(options: fastjon , jackson ) |
 
 ##### Examples
- * The <plugin> element is a child element of the <context> element. Any number of plugins can be specified in the context.
+ * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
 ```xml
  <plugin type="com.github.uinios.mybatis.plugin.DomainPlugin">
     <property name="serializable" value="true"/>
@@ -119,7 +119,7 @@
 | mysql | false |  mysql paging requires special handling  |
 | separationPackage | false |  Whether to split Dynamic Sql into separate packages  |
 ##### examples
- * The <plugin> element is a child element of the <context> element. Any number of plugins can be specified in the context.
+ * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
 ```xml
  <!-- Only supports mybatis-dynamic-sql -->
  <plugin type="com.github.uinios.mybatis.plugin.RepositoryPlugin">
@@ -139,7 +139,7 @@
 | basicService | null | Service interface parent class (note:If using[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default, Base Service needs to add dependencies mybatis-dynamic-spring-boot-starter) |
 | basicServiceImpl | null | ServiceImplParent (note:If using[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default, Base Service Impl needs to add dependency mybatis-dynamic-spring-boot-starter) |
  ##### examples
- * The <plugin> element is a child element of the <context> element. Any number of plugins can be specified in the context.
+ * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ServicePlugin">
      <property name="targetProject" value="src/main/java"/>
@@ -158,7 +158,7 @@
 | rest | false | true is @RestController,false is @Controller |
 | respond | null | Return to result set,copy [Respond](./docs/Respond.java)Into this project (Note: If you use[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default Respond needs to add dependenciesmybatis-dynamic-spring-boot-starter)  |
  ##### Examples
- * The <plugin> element is a child element of the <context> element. Any number of plugins can be specified in the context.
+ * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
  ```xml
   <plugin type="com.github.uinios.mybatis.plugin.ControllerPlugin">
       <property name="rest" value="true"/>
