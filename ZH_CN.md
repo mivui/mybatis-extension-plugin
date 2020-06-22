@@ -81,7 +81,7 @@
 | requiredArgsConstructor | false | requiredArgsConstructor |
 
 ##### 示例
-* <plugin>元素用于定义插件。插件可用于扩展或修改MyBatis Generator（MBG）生成的代码。此元素是<context>元素的子 元素。可以在上下文中指定任意数量的插件.
+* <plugin>元素是<context>元素的子 元素。可以在上下文中指定任意数量的插件。
 ```xml
  <plugin type="com.github.uinios.mybatis.plugin.LombokPlugin">
     <property name="data" value="true"/>
