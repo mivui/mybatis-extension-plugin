@@ -36,13 +36,13 @@
                 <configuration>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
-                </configuration>
+                </configuration>~~~~
                 <dependencies>
                     <!--mysql As an example-->
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.18</version>
+                        <version>8.0.20</version>
                     </dependency>
                     <!--mybatis-dynamic-plugin-->
                     <dependency>
