@@ -154,7 +154,7 @@
       <property name="respond" value="org.example.Respond"/>
   </plugin>
  ```
-##### 生成示例(部份代码)
+##### 生成展示(部份代码)
 ```java
 @Slf4j
 @RestController
@@ -173,5 +173,5 @@ public class ExampleController {
 ```
 ------      
 > 生成
- * idea打开右侧maven->plugins->mybatis-generator->mybatis-generator:generator 点击执行  
- * 或mvn mybatis-generator:generator  
+ * idea打开右侧 maven->plugins->mybatis-generator->  mybatis-generator:generator 点击执行  
+ * 或  mvn mybatis-generator:generator  

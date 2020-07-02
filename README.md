@@ -154,7 +154,7 @@
       <property name="respond" value="org.example.Respond"/>
   </plugin>
  ```
-##### Generate example (partial code)
+##### Generate impressions (partial code)
 ```java
 @Slf4j
 @RestController
@@ -173,5 +173,5 @@ public class ExampleController {
 ```
 ------      
 > Generate
- * Idea opens the right side maven->plugins->mybatis-generator->mybatis-generator:generator Click to execute 
- * Or mvn mybatis-generator:generator 
+ * Idea opens the right side  maven->plugins->mybatis-generator->  mybatis-generator:generator Click to execute 
+ * Or  mvn mybatis-generator:generator 
