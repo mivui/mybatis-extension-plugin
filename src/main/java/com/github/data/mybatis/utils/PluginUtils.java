@@ -1,13 +1,13 @@
-package com.github.uinios.mybatis.plugin.utils;
+package com.github.data.mybatis.utils;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
 
-import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author Jingle-Cat
@@ -134,52 +134,5 @@ public class PluginUtils {
                 }
             }
         }
-    }
-
-    public static void updateMethod(Interface interface_, String methodName, Parameter parameter, List<String> bodyLines) {
-        List<Method> methods = interface_.getMethods();
-        for (Method method : methods) {
-            if (Objects.equals(method.getName(), methodName)) {
-                List<Parameter> parameters = method.getParameters();
-                for (Parameter param : parameters) {
-                    String fullyQualifiedName = param.getType().getFullyQualifiedNameWithoutTypeParameters();
-                    String parameterFullyQualifiedName = parameter.getType().getFullyQualifiedNameWithoutTypeParameters();
-                    if (Objects.equals(fullyQualifiedName, parameterFullyQualifiedName)) {
-                        method.getBodyLines().addAll(0, bodyLines);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
-    public static Method getMethod(Interface interface_, String methodName, Parameter parameter) {
-        List<Method> methods = interface_.getMethods();
-        AtomicReference<Method> method = new AtomicReference<>();
-        methods.forEach(m -> {
-            if (Objects.equals(m.getName(), methodName)) {
-                List<Parameter> parameters = m.getParameters();
-                parameters.forEach(
-                        param -> {
-                            String fullyQualifiedName = param.getType().getFullyQualifiedNameWithoutTypeParameters();
-                            String parameterFullyQualifiedName = parameter.getType().getFullyQualifiedNameWithoutTypeParameters();
-                            if (Objects.equals(fullyQualifiedName, parameterFullyQualifiedName)) {
-                                method.set(m);
-                            }
-                        }
-                );
-            }
-        });
-        return method.get();
-    }
-
-    public static String getDynamicSqlPackage(IntrospectedTable introspectedTable) {
-        String daoPackage = introspectedTable.getContext().getJavaClientGeneratorConfiguration().getTargetPackage();
-        String[] split = daoPackage.split("\\.");
-        List<String> list = Stream.of(split).collect(Collectors.toList());
-        list.remove(list.size() - 1);
-        List<String> collect = list.stream().map(o -> o + ".").collect(Collectors.toList());
-        collect.add("sql");
-        return collect.stream().map(Object::toString).reduce("", String::concat);
     }
 }

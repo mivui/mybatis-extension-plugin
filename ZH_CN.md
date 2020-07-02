@@ -1,20 +1,20 @@
 # mybatis-dynamic-plugin
 [中文](./ZH_CN.md) | [English](./README.md)
 * 简介
-  * 注意:需要先学习mybatis-generator-maven-plugin的使用 链接: http://mybatis.org/generator/running/runningWithMaven.html
-  * 注意:需要先学习生成文件的配置 链接: http://mybatis.org/generator/configreference/xmlconfig.html
+  * 支持Mybatis3 和 mybatis-dynamic-sql
+  * 注意:需要先学习mybatis-generator-maven-plugin的使用 http://mybatis.org/generator/running/runningWithMaven.html
+  * 注意:需要先学习生成文件的配置 http://mybatis.org/generator/configreference/xmlconfig.html
   * 提供 Entity,Dao 扩展。
   * 提供 Service,Controller 生成。
-  * 建议使用mybatis-dynamic-sql提供更好功能支持,mybatis-dynamic-sql使用参考[官方](https://mybatis.org/mybatis-dynamic-sql/)
 ------
 ##### 添加依赖(示例)
 ```xml
      <!-- 第一次使用需下载 -->
     <!-- <dependencies>
         <dependency>
-            <groupId>com.github.uinios</groupId>
+            <groupId>com.github.data.mybatis</groupId>
             <artifactId>mybatis-dynamic-plugin</artifactId>
-            <version>1.5.2</version>
+            <version>2.0.0</version>
         </dependency>
     </dependencies> -->
 
@@ -36,7 +36,7 @@
                 <configuration>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
-                </configuration>~~~~
+                </configuration>
                 <dependencies>
                     <!--mysql As an example-->
                     <dependency>
@@ -46,9 +46,9 @@
                     </dependency>
                     <!--mybatis-dynamic-plugin-->
                     <dependency>
-                        <groupId>com.github.uinios</groupId>
+                        <groupId>com.github.data.mybatis</groupId>
                         <artifactId>mybatis-dynamic-plugin</artifactId>
-                        <version>1.5.2</version>
+                        <version>2.0.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -57,14 +57,6 @@
 ```
 ------
 #### 插件使用
-> 可能使用到的依赖
-```xml
- <dependency>
-    <groupId>com.github.uinios</groupId>
-    <artifactId>mybatis-dynamic-spring-boot-starter</artifactId>
-    <version>1.5.2</version>
- </dependency>
-```
 
 > LombokPlugin (lombok生成)
   
@@ -83,7 +75,7 @@
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
 ```xml
- <plugin type="com.github.uinios.mybatis.plugin.LombokPlugin">
+ <plugin type="com.github.data.mybatis.LombokPlugin">
     <property name="data" value="true"/>
     <property name="builder" value="true"/>
     <property name="noArgsConstructor" value="true"/>
@@ -98,35 +90,30 @@
 |---------|--------|---------|
 | serializable | false | 是否实现Serializable |
 | dateSerialize | false | 日期序列化只支持JDK8日期类型 |
-| json | null | 日期反序列化只支持JDK8日期类型(选项: fastjon , jackson ) |
+| json | null | 日期反序列化只支持JDK8日期类型(选项: fastJson , jackson ) |
 
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
 ```xml
- <plugin type="com.github.uinios.mybatis.plugin.DomainPlugin">
+ <plugin type="com.github.data.mybatis.DomainPlugin">
     <property name="serializable" value="true"/>
     <property name="dateSerialize" value="true"/>
     <property name="json" value="jackson"/>
  </plugin>
 ```
 ------
-> RepositoryPlugin (数据访问对象DAO扩展,只支持[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/))
+> RepositoryPlugin (数据访问对象DAO扩展)
 
 | 属性 | 默认值 | 简介 |
 |---------|--------|---------|
-| repository | null | Dao父类, 默认提供MybatisRepository需添加依赖:mybatis-dynamic-spring-boot-starter |
-| uuid | null | 新增主键uuid配置(选项: true , false , uuid) true为36位uuid , false为null , uuid为32位uuid  |
-| mysql | false |  mysql分页需要特殊处理  |
-| separationPackage | false |  是否拆分将DynamicSql拆分为单独的包  |
+| suppressAllComments | false | 是否去掉生成的注释 |
+| repository | null | Dao父类,默认为null |
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
 ```xml
- <!-- 只支持mybatis-dynamic-sql -->
- <plugin type="com.github.uinios.mybatis.plugin.RepositoryPlugin">
-   <property name="uuid" value="true"/>
-   <property name="mysql" value="true"/>
-   <property name="separationPackage" value="true"/>
-   <property name="repository" value="com.github.uinios.mybatis.basic.repository.MybatisRepository"/>
+ <plugin type="com.github.data.mybatis.RepositoryPlugin">
+   <property name="suppressAllComments" value="true"/>
+   <property name="repository" value="org.example.MybatisRepository"/>
  </plugin>
 ```
 ------
@@ -136,16 +123,16 @@
 |---------|--------|---------|
 | targetProject |  null  | 生成路径例如:src/main/java |
 | targetPackage |  null  | 生成所在包路径例如:org.example.service |
-| basicService |  null  | service接口父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseService需添加依赖mybatis-dynamic-spring-boot-starter) |
-| basicServiceImpl |  null  | serviceImpl父类 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供BaseServiceImpl需添加依赖mybatis-dynamic-spring-boot-starter) |
+| basicService |  null  | service接口父类, 默认为null |
+| basicServiceImpl |  null  | serviceImpl父类, 默认为null |
  ##### 示例
  * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
  ```xml
-  <plugin type="com.github.uinios.mybatis.plugin.ServicePlugin">
+  <plugin type="com.github.data.mybatis.ServicePlugin">
      <property name="targetProject" value="src/main/java"/>
      <property name="targetPackage" value="org.example.service"/>
-     <property name="basicService" value="com.github.uinios.mybatis.basic.service.BaseService"/>
-     <property name="basicServiceImpl" value="com.github.uinios.mybatis.basic.service.BaseServiceImpl"/>
+     <property name="basicService" value="org.example.BaseService"/>
+     <property name="basicServiceImpl" value="org.example.BaseServiceImpl"/>
   </plugin>
  ```
 ------
@@ -156,19 +143,34 @@
 | targetProject |  null   | 生成路径例如:src/main/java |
 | targetPackage |  null  | 生成所在包路径例如:org.example.controller |
 | rest |  false  | true为@RestController,false为@Controller |
-| respond |  null  | 返回结果集,复制[Respond](./docs/Respond.java)此类到项目中 (注意:如果使用[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) 默认提供Respond需添加依赖mybatis-dynamic-spring-boot-starter)  |
-| zh_cn |  false  | 对中文更好的扩展请设置为true  |
+| respond |  null  | controller返回结果集 默认为null |
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
  ```xml
-  <plugin type="com.github.uinios.mybatis.plugin.ControllerPlugin">
-      <property name="rest" value="true"/>
-      <property name="zh_cn" value="true"/>
+  <plugin type="com.github.data.mybatis.ControllerPlugin">
       <property name="targetProject" value="src/main/java"/>
       <property name="targetPackage" value="org.example.controller"/>
-      <property name="respond" value="com.github.uinios.mybatis.basic.io.Respond"/>
+      <property name="rest" value="true"/>
+      <property name="respond" value="org.example.Respond"/>
   </plugin>
  ```
+##### 生成示例(部份代码)
+```java
+@Slf4j
+@RestController
+@RequestMapping("example")
+public class ExampleController {
+
+    @Autowired
+    private ExampleService exampleService;
+    
+    @GetMapping("findAll")
+    public Respond findAll() {
+       return null;
+    }
+    //...
+}
+```
 ------      
 > 生成
  * idea打开右侧maven->plugins->mybatis-generator->mybatis-generator:generator 点击执行  

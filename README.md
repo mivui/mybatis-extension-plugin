@@ -1,20 +1,20 @@
 # mybatis-dynamic-plugin
 [中文](./ZH_CN.md) | [English](./README.md)
 * Introduction
-  * note:Need to learn the use of mybatis-generator-maven-plugin first, link: http://mybatis.org/generator/running/runningWithMaven.html
-  * Note: You need to learn the configuration of the generated file first, link: http://mybatis.org/generator/configreference/xmlconfig.html
-  * Provide Entity, Dao extension。
-  * Provide Service, Controller generation。
-  * It is recommended to use mybatis-dynamic-sql to provide better functional support,mybatis-dynamic-sqlUse reference[Official](https://mybatis.org/mybatis-dynamic-sql/)
+  * Support Mybatis3 and mybatis-dynamic-sql
+  * Note: You need to learn the use of mybatis-generator-maven-plugin first http://mybatis.org/generator/running/runningWithMaven.html
+  * Note: You need to learn the configuration of the generated file first http://mybatis.org/generator/configreference/xmlconfig.html
+  * Provide Entity, Dao extension
+  * Provide Service, Controller generation
 ------
 ##### Add dependency (example)
 ```xml
-     <!-- The first time you need to download -->
+     <!--The first time you need to download -->
     <!-- <dependencies>
         <dependency>
-            <groupId>com.github.uinios</groupId>
+            <groupId>com.github.data.mybatis</groupId>
             <artifactId>mybatis-dynamic-plugin</artifactId>
-            <version>1.5.2</version>
+            <version>2.0.0</version>
         </dependency>
     </dependencies> -->
 
@@ -46,9 +46,9 @@
                     </dependency>
                     <!--mybatis-dynamic-plugin-->
                     <dependency>
-                        <groupId>com.github.uinios</groupId>
+                        <groupId>com.github.data.mybatis</groupId>
                         <artifactId>mybatis-dynamic-plugin</artifactId>
-                        <version>1.5.2</version>
+                        <version>2.0.0</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -57,20 +57,12 @@
 ```
 ------
 #### Plugin usage
-> Possible dependencies
-```xml
- <dependency>
-    <groupId>com.github.uinios</groupId>
-    <artifactId>mybatis-dynamic-spring-boot-starter</artifactId>
-    <version>1.5.2</version>
- </dependency>
-```
 
 > LombokPlugin (lombok generation)
   
 | property | defaults | introduction |
 |---------|--------|---------|
-| data | false | Contains getter,setter,toString,equalsAndHashCode,requiredArgsConstructor |
+| data | false | include getter,setter,toString,equalsAndHashCode,requiredArgsConstructor |
 | getter | false | getter |
 | setter | false | getter |
 | toString | false | toString |
@@ -80,10 +72,10 @@
 | allArgsConstructor | false | allArgsConstructor |
 | requiredArgsConstructor | false | requiredArgsConstructor |
 
-##### examples
- * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+##### Examples
+* The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
 ```xml
- <plugin type="com.github.uinios.mybatis.plugin.LombokPlugin">
+ <plugin type="com.github.data.mybatis.LombokPlugin">
     <property name="data" value="true"/>
     <property name="builder" value="true"/>
     <property name="noArgsConstructor" value="true"/>
@@ -98,35 +90,30 @@
 |---------|--------|---------|
 | serializable | false | Whether to implement Serializable |
 | dateSerialize | false | Date serialization only supports JDK 8 date types |
-| json | null | Date deserialization only supports JDK 8 date types(options: fastjon , jackson ) |
+| json | null | Date deserialization only supports JDK8 date types (options: fastJson, jackson) |
 
-##### Examples
- * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+##### 示例
+* The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
 ```xml
- <plugin type="com.github.uinios.mybatis.plugin.DomainPlugin">
+ <plugin type="com.github.data.mybatis.DomainPlugin">
     <property name="serializable" value="true"/>
     <property name="dateSerialize" value="true"/>
     <property name="json" value="jackson"/>
  </plugin>
 ```
 ------
-> RepositoryPlugin (Data Access Object DAO Extension,Only support[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/))
+> RepositoryPlugin (Data Access Object DAO Extension)
 
 | property | defaults | introduction |
 |---------|--------|---------|
-| repository | null | Dao parent, By default, Mybatis Repository needs to add dependencies:mybatis-dynamic-spring-boot-starter |
-| uuid | null | New primary key uuid configuration(Options: true , false , uuid) true is 36 bits uuid , false is null, uuid is a 32-bit uuid  |
-| mysql | false |  mysql paging requires special handling  |
-| separationPackage | false |  Whether to split Dynamic Sql into separate packages  |
-##### examples
- * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+| suppressAllComments | false | Whether to remove the generated comments |
+| repository | null | Dao parent class, default is null |
+##### 示例
+* The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
 ```xml
- <!-- Only supports mybatis-dynamic-sql -->
- <plugin type="com.github.uinios.mybatis.plugin.RepositoryPlugin">
-   <property name="uuid" value="true"/>
-   <property name="mysql" value="true"/>
-   <property name="separationPackage" value="true"/>
-   <property name="repository" value="com.github.uinios.mybatis.basic.repository.MybatisRepository"/>
+ <plugin type="com.github.data.mybatis.RepositoryPlugin">
+   <property name="suppressAllComments" value="true"/>
+   <property name="repository" value="org.example.MybatisRepository"/>
  </plugin>
 ```
 ------
@@ -134,40 +121,57 @@
 
 | property | defaults | introduction |
 |---------|--------|---------|
-| targetProject | null | Generate path example:src/main/java |
-| targetPackage | null | Generate package path example:org.example.service |
-| basicService | null | Service interface parent class (note:If using[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default, Base Service needs to add dependencies mybatis-dynamic-spring-boot-starter) |
-| basicServiceImpl | null | ServiceImplParent (note:If using[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default, Base Service Impl needs to add dependency mybatis-dynamic-spring-boot-starter) |
- ##### examples
- * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+| targetProject |  null  | Generate path example: src/main/java |
+| targetPackage |  null  | generate package path example: org.example.service |
+| basicService |  null  | service interface parent class default is null |
+| basicServiceImpl |  null  | serviceImpl parent class, default is null |
+ ##### 示例
+ *The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
  ```xml
-  <plugin type="com.github.uinios.mybatis.plugin.ServicePlugin">
+  <plugin type="com.github.data.mybatis.ServicePlugin">
      <property name="targetProject" value="src/main/java"/>
      <property name="targetPackage" value="org.example.service"/>
-     <property name="basicService" value="com.github.uinios.mybatis.basic.service.BaseService"/>
-     <property name="basicServiceImpl" value="com.github.uinios.mybatis.basic.service.BaseServiceImpl"/>
+     <property name="basicService" value="org.example.BaseService"/>
+     <property name="basicServiceImpl" value="org.example.BaseServiceImpl"/>
   </plugin>
  ```
 ------
-> ControllerPlugin (Controller generate)
+> ControllerPlugin (Controller generation)
 
 | property | defaults | introduction |
 |---------|--------|---------|
-| targetProject | null | Generate path example:src/main/java |
-| targetPackage | null | Generate package path example:org.example.controller |
-| rest | false | true is @RestController,false is @Controller |
-| respond | null | Return to result set,copy [Respond](./docs/Respond.java)Into this project (Note: If you use[mybatis-dynamic-sql](https://mybatis.org/mybatis-dynamic-sql/) By default Respond needs to add dependenciesmybatis-dynamic-spring-boot-starter)  |
- ##### Examples
- * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+| targetProject |  null   | Generate path example: src/main/java |
+| targetPackage |  null  | Generate package path example: org.example.controller |
+| rest |  false  | true for @RestController, false for @Controller |
+| respond |  null  | The controller returns the result set. The default is null |
+##### 示例
+* The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
  ```xml
-  <plugin type="com.github.uinios.mybatis.plugin.ControllerPlugin">
-      <property name="rest" value="true"/>
+  <plugin type="com.github.data.mybatis.ControllerPlugin">
       <property name="targetProject" value="src/main/java"/>
       <property name="targetPackage" value="org.example.controller"/>
-      <property name="respond" value="com.github.uinios.mybatis.basic.io.Respond"/>
+      <property name="rest" value="true"/>
+      <property name="respond" value="org.example.Respond"/>
   </plugin>
  ```
+##### Generate example (partial code)
+```java
+@Slf4j
+@RestController
+@RequestMapping("example")
+public class ExampleController {
+
+    @Autowired
+    private ExampleService exampleService;
+    
+    @GetMapping("findAll")
+    public Respond findAll() {
+       return null;
+    }
+    //...
+}
+```
 ------      
-> generate
- * Idea opens the right side maven->plugins->mybatis-generator->mybatis-generator:generator Click to execute
- * Or mvn mybatis-generator:generator  
+> Generate
+ * Idea opens the right side maven->plugins->mybatis-generator->mybatis-generator:generator Click to execute 
+ * Or mvn mybatis-generator:generator 

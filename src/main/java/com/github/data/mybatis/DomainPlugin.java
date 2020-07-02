@@ -1,6 +1,6 @@
-package com.github.uinios.mybatis.plugin;
+package com.github.data.mybatis;
 
-import com.github.uinios.mybatis.plugin.normal.Json;
+import com.github.data.mybatis.normal.Json;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
-import static com.github.uinios.mybatis.plugin.utils.PluginUtils.removeGeneratedAnnotation;
+import static com.github.data.mybatis.utils.PluginUtils.removeGeneratedAnnotation;
 
 /**
  * @author Jingle-Cat
@@ -70,7 +70,7 @@ public class DomainPlugin extends PluginAdapter {
             if (flag) {
                 if (Objects.nonNull(json)) {
                     switch (json) {
-                        case fastjon:
+                        case fastJson:
                             final String jSONField = "com.alibaba.fastjson.annotation.JSONField";
                             topLevelClass.addImportedType(jSONField);
                             break;
@@ -95,7 +95,7 @@ public class DomainPlugin extends PluginAdapter {
             if (Objects.equals(name, LocalDate.class.getSimpleName())) {
                 if (Objects.nonNull(json)) {
                     switch (json) {
-                        case fastjon:
+                        case fastJson:
                             field.addAnnotation("@JSONField(pattern=\"yyyy-MM-dd\")");
                             break;
                         case jackson:
@@ -107,7 +107,7 @@ public class DomainPlugin extends PluginAdapter {
             } else if (Objects.equals(name, LocalDateTime.class.getSimpleName())) {
                 if (Objects.nonNull(json)) {
                     switch (json) {
-                        case fastjon:
+                        case fastJson:
                             field.addAnnotation("@JSONField(pattern=\"yyyy-MM-dd HH:mm:ss\")");
                             break;
                         case jackson:

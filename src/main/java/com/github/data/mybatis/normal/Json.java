@@ -1,14 +1,14 @@
-package com.github.uinios.mybatis.plugin.normal;
+package com.github.data.mybatis.normal;
 
 import java.util.Objects;
 
 public enum Json {
-    fastjon,
+    fastJson,
     jackson;
 
     public static Json get(String json) {
-        if (Objects.equals(json, Json.fastjon.name())) {
-            return Json.fastjon;
+        if (Objects.equals(json, Json.fastJson.name())) {
+            return Json.fastJson;
         } else if (Objects.equals(json, Json.jackson.name())) {
             return Json.jackson;
         }
