@@ -12,7 +12,7 @@
      <!-- 第一次使用需下载 -->
     <!-- <dependencies>
         <dependency>
-            <groupId>com.github.data.mybatis</groupId>
+            <groupId>com.github.uinios</groupId>
             <artifactId>mybatis-dynamic-plugin</artifactId>
             <version>2.0.0</version>
         </dependency>
@@ -46,7 +46,7 @@
                     </dependency>
                     <!--mybatis-dynamic-plugin-->
                     <dependency>
-                        <groupId>com.github.data.mybatis</groupId>
+                        <groupId>com.github.uinios</groupId>
                         <artifactId>mybatis-dynamic-plugin</artifactId>
                         <version>2.0.0</version>
                     </dependency>
@@ -75,7 +75,7 @@
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
 ```xml
- <plugin type="com.github.data.mybatis.LombokPlugin">
+ <plugin type="com.github.uinios.mybatis.LombokPlugin">
     <property name="data" value="true"/>
     <property name="builder" value="true"/>
     <property name="noArgsConstructor" value="true"/>
@@ -95,7 +95,7 @@
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
 ```xml
- <plugin type="com.github.data.mybatis.DomainPlugin">
+ <plugin type="com.github.uinios.mybatis.DomainPlugin">
     <property name="serializable" value="true"/>
     <property name="dateSerialize" value="true"/>
     <property name="json" value="jackson"/>
@@ -111,7 +111,7 @@
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
 ```xml
- <plugin type="com.github.data.mybatis.RepositoryPlugin">
+ <plugin type="com.github.uinios.mybatis.RepositoryPlugin">
    <property name="suppressAllComments" value="true"/>
    <property name="repository" value="org.example.MybatisRepository"/>
  </plugin>
@@ -128,7 +128,7 @@
  ##### 示例
  * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
  ```xml
-  <plugin type="com.github.data.mybatis.ServicePlugin">
+  <plugin type="com.github.uinios.mybatis.ServicePlugin">
      <property name="targetProject" value="src/main/java"/>
      <property name="targetPackage" value="org.example.service"/>
      <property name="basicService" value="org.example.BaseService"/>
@@ -147,7 +147,7 @@
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
  ```xml
-  <plugin type="com.github.data.mybatis.ControllerPlugin">
+  <plugin type="com.github.uinios.mybatis.ControllerPlugin">
       <property name="targetProject" value="src/main/java"/>
       <property name="targetPackage" value="org.example.controller"/>
       <property name="rest" value="true"/>

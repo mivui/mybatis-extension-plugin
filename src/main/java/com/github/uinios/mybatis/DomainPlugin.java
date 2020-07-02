@@ -1,6 +1,6 @@
-package com.github.data.mybatis;
+package com.github.uinios.mybatis;
 
-import com.github.data.mybatis.normal.Json;
+import com.github.uinios.mybatis.normal.Json;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
-import static com.github.data.mybatis.utils.PluginUtils.removeGeneratedAnnotation;
+import static com.github.uinios.mybatis.utils.PluginUtils.removeGeneratedAnnotation;
 
 /**
  * @author Jingle-Cat
