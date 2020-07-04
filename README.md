@@ -92,7 +92,7 @@
 | dateSerialize | false | Date serialization only supports JDK 8 date types |
 | json | null | Date deserialization only supports JDK8 date types (options: fastJson, jackson) |
 
-##### 示例
+##### Examples
 * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
 ```xml
  <plugin type="com.github.uinios.mybatis.DomainPlugin">
@@ -108,7 +108,7 @@
 |---------|--------|---------|
 | suppressAllComments | false | Whether to remove the generated comments |
 | repository | null | Dao parent class, default is null |
-##### 示例
+##### Examples
 * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
 ```xml
  <plugin type="com.github.uinios.mybatis.RepositoryPlugin">
@@ -125,7 +125,7 @@
 | targetPackage |  null  | generate package path example: org.example.service |
 | basicService |  null  | service interface parent class default is null |
 | basicServiceImpl |  null  | serviceImpl parent class, default is null |
- ##### 示例
+ ##### Examples
  *The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
  ```xml
   <plugin type="com.github.uinios.mybatis.ServicePlugin">
@@ -144,7 +144,7 @@
 | targetPackage |  null  | Generate package path example: org.example.controller |
 | rest |  false  | true for @RestController, false for @Controller |
 | respond |  null  | The controller returns the result set. The default is null |
-##### 示例
+##### Examples
 * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
  ```xml
   <plugin type="com.github.uinios.mybatis.ControllerPlugin">
