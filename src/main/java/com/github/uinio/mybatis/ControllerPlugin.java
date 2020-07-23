@@ -1,6 +1,6 @@
-package com.github.uinios.mybatis;
+package com.github.uinio.mybatis;
 
-import com.github.uinios.mybatis.utils.PluginUtils;
+import com.github.uinio.mybatis.utils.PluginUtils;
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -10,7 +10,7 @@ import org.mybatis.generator.internal.util.StringUtility;
 
 import java.util.*;
 
-import static com.github.uinios.mybatis.utils.PluginUtils.restfulMethod;
+import static com.github.uinio.mybatis.utils.PluginUtils.restfulMethod;
 
 /**
  * @author Jingle-Cat

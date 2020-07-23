@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.uinios</groupId>
-    <artifactId>mybatis-dynamic-plugin</artifactId>
-    <version>2.0.0</version>
+    <groupId>com.github.uinio</groupId>
+    <artifactId>mybatis-extension-plugin</artifactId>
+    <version>2.0.1</version>
 
-    <name>mybatis-dynamic-plugin</name>
-    <description>mybatis-dynamic-plugin</description>
-    <url>https://github.com/uinios/mybatis-dynamic-plugin</url>
+    <name>mybatis-extension-plugin</name>
+    <description>mybatis-extension-plugin</description>
+    <url>https://github.com/uinio/mybatis-extension-plugin</url>
 
     <licenses>
         <license>
@@ -20,20 +20,20 @@
 
     <developers>
         <developer>
-            <name>Jingle-Cat</name>
-            <email>Jingle-Cat@qq.com</email>
+            <name>lvXiaoBu</name>
+            <email>lv_xiao_bu@qq.com</email>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:uinios/mybatis-dynamic-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:uinios/mybatis-dynamic-plugin.git</developerConnection>
-        <url>git@github.com:uinios/mybatis-dynamic-plugin.git</url>
+        <connection>scm:git:git@github.com:uinio/mybatis-extension-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:uinio/mybatis-extension-plugin.git</developerConnection>
+        <url>git@github.com:uinio/mybatis-extension-plugin.git</url>
     </scm>
 
     <issueManagement>
         <system>Github Issue</system>
-        <url>https://github.com/uinios/mybatis-dynamic-plugin/issues</url>
+        <url>https://github.com/uinio/mybatis-extension-plugin/issues</url>
     </issueManagement>
 
     <properties>

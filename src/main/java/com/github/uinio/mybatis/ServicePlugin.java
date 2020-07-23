@@ -1,4 +1,4 @@
-package com.github.uinios.mybatis;
+package com.github.uinio.mybatis;
 
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -11,7 +11,7 @@ import org.mybatis.generator.config.PropertyRegistry;
 
 import java.util.*;
 
-import static com.github.uinios.mybatis.utils.PluginUtils.primaryKeyType;
+import static com.github.uinio.mybatis.utils.PluginUtils.primaryKeyType;
 
 /**
  * @author Jingle-Cat

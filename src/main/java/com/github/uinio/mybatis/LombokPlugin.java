@@ -1,4 +1,4 @@
-package com.github.uinios.mybatis;
+package com.github.uinio.mybatis;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;

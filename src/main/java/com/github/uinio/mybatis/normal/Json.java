@@ -1,4 +1,4 @@
-package com.github.uinios.mybatis.normal;
+package com.github.uinio.mybatis.normal;
 
 import java.util.Objects;
 
