@@ -1,4 +1,4 @@
-# mybatis-dynamic-plugin
+# mybatis-extension-plugin
 [中文](./ZH_CN.md) | [English](./README.md)
 * Introduction
   * Support Mybatis3 and mybatis-dynamic-sql
@@ -44,7 +44,7 @@
                         <artifactId>mysql-connector-java</artifactId>
                         <version>8.0.21</version>
                     </dependency>
-                    <!--mybatis-dynamic-plugin-->
+                    <!--mybatis-extension-plugin-->
                     <dependency>
                         <groupId>com.github.uinio</groupId>
                         <artifactId>mybatis-dynamic-plugin</artifactId>
