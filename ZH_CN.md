@@ -1,5 +1,5 @@
 # mybatis-extension-plugin
-[中文](./ZH_CN.md) | [English](./README.md)
+中文 | [English](./README.md)
 * 简介
   * 支持Mybatis3 和 mybatis-dynamic-sql
   * 注意:需要先学习mybatis-generator-maven-plugin的使用 http://mybatis.org/generator/running/runningWithMaven.html
