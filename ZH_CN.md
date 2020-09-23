@@ -1,7 +1,7 @@
 # mybatis-extension-plugin
 中文 | [English](./README.md)
 * 简介
-  * 支持Mybatis3 和 mybatis-dynamic-sql
+  * 支持 Mybatis3 和 mybatis-dynamic-sql
   * 注意:需要先学习mybatis-generator-maven-plugin的使用 http://mybatis.org/generator/running/runningWithMaven.html
   * 注意:需要先学习生成文件的配置 http://mybatis.org/generator/configreference/xmlconfig.html
   * 提供 Entity,Dao 扩展。
