@@ -10,14 +10,14 @@ English |  [中文](./ZH_CN.md)
 ------
 ##### Add dependency (example)
 ```xml
-     <!--The first time you need to download -->
-    <!-- <dependencies>
+    <dependencies>
         <dependency>
             <groupId>com.github.uinio</groupId>
             <artifactId>mybatis-extension-plugin</artifactId>
             <version>1.4.0</version>
+            <optional>true</optional>
         </dependency>
-    </dependencies> -->
+    </dependencies>
 
     <build>
         <plugins>

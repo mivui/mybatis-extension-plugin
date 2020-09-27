@@ -10,14 +10,14 @@
 ------
 ##### 添加依赖(示例)
 ```xml
-     <!-- 第一次使用需下载 -->
-    <!-- <dependencies>
+    <dependencies>
         <dependency>
             <groupId>com.github.uinio</groupId>
             <artifactId>mybatis-extension-plugin</artifactId>
             <version>1.4.0</version>
+            <optional>true</optional>
         </dependency>
-    </dependencies> -->
+    </dependencies>
 
     <build>
         <plugins>
