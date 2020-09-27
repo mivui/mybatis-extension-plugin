@@ -1,5 +1,6 @@
 # mybatis-extension-plugin
 中文 | [English](./README.md)
+* 为了方便使用,将和mybatis-generator主版本号对齐
 * 简介
   * 支持 Mybatis3 和 mybatis-dynamic-sql
   * 注意:需要先学习mybatis-generator-maven-plugin的使用 http://mybatis.org/generator/running/runningWithMaven.html
@@ -14,7 +15,7 @@
         <dependency>
             <groupId>com.github.uinio</groupId>
             <artifactId>mybatis-extension-plugin</artifactId>
-            <version>2.0.1</version>
+            <version>1.4.0</version>
         </dependency>
     </dependencies> -->
 
@@ -48,7 +49,7 @@
                     <dependency>
                         <groupId>com.github.uinio</groupId>
                         <artifactId>mybatis-extension-plugin</artifactId>
-                        <version>2.0.1</version>
+                        <version>1.4.0</version>
                     </dependency>
                 </dependencies>
             </plugin>

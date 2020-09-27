@@ -1,5 +1,6 @@
 # mybatis-extension-plugin
 English |  [中文](./ZH_CN.md) 
+* For ease of use, align with the main version number of mybatis-generator
 * Introduction
   * Support Mybatis3 and mybatis-dynamic-sql
   * Note: You need to learn the use of mybatis-generator-maven-plugin first http://mybatis.org/generator/running/runningWithMaven.html
@@ -14,7 +15,7 @@ English |  [中文](./ZH_CN.md)
         <dependency>
             <groupId>com.github.uinio</groupId>
             <artifactId>mybatis-extension-plugin</artifactId>
-            <version>2.0.1</version>
+            <version>1.4.0</version>
         </dependency>
     </dependencies> -->
 
@@ -48,7 +49,7 @@ English |  [中文](./ZH_CN.md)
                     <dependency>
                         <groupId>com.github.uinio</groupId>
                         <artifactId>mybatis-dynamic-plugin</artifactId>
-                        <version>2.0.1</version>
+                        <version>1.4.0</version>
                     </dependency>
                 </dependencies>
             </plugin>

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * @author Jingle-Cat
+ * @author uinio
  */
 
 public class LombokPlugin extends PluginAdapter {

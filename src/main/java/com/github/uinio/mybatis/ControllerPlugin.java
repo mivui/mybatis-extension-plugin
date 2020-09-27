@@ -13,7 +13,7 @@ import java.util.*;
 import static com.github.uinio.mybatis.utils.PluginUtils.restfulMethod;
 
 /**
- * @author Jingle-Cat
+ * @author uinio
  */
 
 public class ControllerPlugin extends PluginAdapter {

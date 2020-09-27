@@ -2,6 +2,9 @@ package com.github.uinio.mybatis.normal;
 
 import java.util.Objects;
 
+/**
+ * @author uinio
+ */
 public enum Json {
     fastJson,
     jackson;

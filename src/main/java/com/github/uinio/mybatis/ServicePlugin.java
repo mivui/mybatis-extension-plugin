@@ -14,7 +14,7 @@ import java.util.*;
 import static com.github.uinio.mybatis.utils.PluginUtils.primaryKeyType;
 
 /**
- * @author Jingle-Cat
+ * @author uinio
  */
 
 public class ServicePlugin extends PluginAdapter {

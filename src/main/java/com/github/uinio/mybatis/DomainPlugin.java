@@ -18,7 +18,7 @@ import java.util.Properties;
 import static com.github.uinio.mybatis.utils.PluginUtils.removeGeneratedAnnotation;
 
 /**
- * @author Jingle-Cat
+ * @author uinio
  */
 
 public class DomainPlugin extends PluginAdapter {

@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * @author Jingle-Cat
+ * @author uinio
  */
 
 public class PluginUtils {
