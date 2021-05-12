@@ -3,7 +3,7 @@ package com.github.uinio.mybatis.normal;
 import java.util.Objects;
 
 /**
- * @author uinio
+ * @author LvXiaobu
  */
 public enum Json {
     fastJson,
