@@ -15,7 +15,7 @@ English |  [中文](./ZH_CN.md)
             <groupId>com.github.uinio</groupId>
             <artifactId>mybatis-extension-plugin</artifactId>
             <version>1.4.0</version>
-            <optional>true</optional>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
