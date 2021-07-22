@@ -16,6 +16,7 @@ English |  [中文](./ZH_CN.md)
             <artifactId>mybatis-extension-plugin</artifactId>
             <version>1.4.0</version>
             <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
