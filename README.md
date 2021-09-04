@@ -49,7 +49,7 @@ English |  [中文](./ZH_CN.md)
                     <!--mybatis-extension-plugin-->
                     <dependency>
                         <groupId>com.github.uinio</groupId>
-                        <artifactId>mybatis-dynamic-plugin</artifactId>
+                        <artifactId>mybatis-extension-plugin</artifactId>
                         <version>1.4.0</version>
                     </dependency>
                 </dependencies>
