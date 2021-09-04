@@ -1,6 +1,7 @@
-package com.github.uinio.mybatis;
+package io.github.mioxs.mybatis;
 
-import com.github.uinio.mybatis.normal.Json;
+import io.github.mioxs.mybatis.normal.Json;
+import io.github.mioxs.mybatis.utils.PluginUtils;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -14,12 +15,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
-
-import static com.github.uinio.mybatis.utils.PluginUtils.removeGeneratedAnnotation;
-
-/**
- * @author uinio
- */
 
 public class DomainPlugin extends PluginAdapter {
 
@@ -46,7 +41,7 @@ public class DomainPlugin extends PluginAdapter {
 
     @Override
     public boolean modelBaseRecordClassGenerated(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
-        removeGeneratedAnnotation(topLevelClass);
+        PluginUtils.removeGeneratedAnnotation(topLevelClass);
         if (serializable) {
             topLevelClass.addImportedType("java.io.Serializable");
             topLevelClass.addSuperInterface(new FullyQualifiedJavaType("Serializable"));

@@ -1,4 +1,4 @@
-package com.github.uinio.mybatis;
+package io.github.mioxs.mybatis;
 
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -11,11 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Properties;
 
-import static com.github.uinio.mybatis.utils.PluginUtils.removeGeneratedAnnotation;
-
-/**
- * @author uinio
- */
+import static io.github.mioxs.mybatis.utils.PluginUtils.removeGeneratedAnnotation;
 
 public class RepositoryPlugin extends PluginAdapter {
 

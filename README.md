@@ -12,9 +12,9 @@ English |  [中文](./ZH_CN.md)
 ```xml
     <dependencies>
         <dependency>
-            <groupId>com.github.uinio</groupId>
+            <groupId>io.github.mioxs</groupId>
             <artifactId>mybatis-extension-plugin</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.1</version>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
@@ -48,9 +48,9 @@ English |  [中文](./ZH_CN.md)
                     </dependency>
                     <!--mybatis-extension-plugin-->
                     <dependency>
-                        <groupId>com.github.uinio</groupId>
-                        <artifactId>mybatis-dynamic-plugin</artifactId>
-                        <version>1.4.0</version>
+                        <groupId>io.github.mioxs</groupId>
+                        <artifactId>mybatis-extension-plugin</artifactId>
+                        <version>1.4.1</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -76,13 +76,15 @@ English |  [中文](./ZH_CN.md)
 
 ##### Examples
 * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+
 ```xml
- <plugin type="com.github.uinio.mybatis.LombokPlugin">
+
+<plugin type="io.github.mioxs.mybatis.LombokPlugin">
     <property name="data" value="true"/>
     <property name="builder" value="true"/>
     <property name="noArgsConstructor" value="true"/>
     <property name="allArgsConstructor" value="true"/>
- </plugin>
+</plugin>
 ```
 ------
 
@@ -96,12 +98,14 @@ English |  [中文](./ZH_CN.md)
 
 ##### Examples
 * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+
 ```xml
- <plugin type="com.github.uinio.mybatis.DomainPlugin">
+
+<plugin type="io.github.mioxs.mybatis.DomainPlugin">
     <property name="serializable" value="true"/>
     <property name="dateSerialize" value="true"/>
     <property name="json" value="jackson"/>
- </plugin>
+</plugin>
 ```
 ------
 > RepositoryPlugin (Data Access Object DAO Extension)
@@ -112,11 +116,13 @@ English |  [中文](./ZH_CN.md)
 | repository | null | Dao parent class, default is null |
 ##### Examples
 * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+
 ```xml
- <plugin type="com.github.uinio.mybatis.RepositoryPlugin">
-   <property name="suppressAllComments" value="true"/>
-   <property name="repository" value="org.example.MybatisRepository"/>
- </plugin>
+
+<plugin type="io.github.mioxs.mybatis.RepositoryPlugin">
+    <property name="suppressAllComments" value="true"/>
+    <property name="repository" value="org.example.MybatisRepository"/>
+</plugin>
 ```
 ------
 > ServicePlugin (Service generation)
@@ -129,13 +135,15 @@ English |  [中文](./ZH_CN.md)
 | basicServiceImpl |  null  | serviceImpl parent class, default is null |
  ##### Examples
  *The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+
  ```xml
-  <plugin type="com.github.uinio.mybatis.ServicePlugin">
-     <property name="targetProject" value="src/main/java"/>
-     <property name="targetPackage" value="org.example.service"/>
-     <property name="basicService" value="org.example.BaseService"/>
-     <property name="basicServiceImpl" value="org.example.BaseServiceImpl"/>
-  </plugin>
+
+<plugin type="io.github.mioxs.mybatis.ServicePlugin">
+    <property name="targetProject" value="src/main/java"/>
+    <property name="targetPackage" value="org.example.service"/>
+    <property name="basicService" value="org.example.BaseService"/>
+    <property name="basicServiceImpl" value="org.example.BaseServiceImpl"/>
+</plugin>
  ```
 ------
 > ControllerPlugin (Controller generation)
@@ -148,13 +156,15 @@ English |  [中文](./ZH_CN.md)
 | respond |  null  | The controller returns the result set. The default is null |
 ##### Examples
 * The \<plugin> element is a child element of the \<context> element. Any number of plugins can be specified in the context.
+
  ```xml
-  <plugin type="com.github.uinio.mybatis.ControllerPlugin">
-      <property name="targetProject" value="src/main/java"/>
-      <property name="targetPackage" value="org.example.controller"/>
-      <property name="rest" value="true"/>
-      <property name="respond" value="org.example.Respond"/>
-  </plugin>
+
+<plugin type="io.github.mioxs.mybatis.ControllerPlugin">
+    <property name="targetProject" value="src/main/java"/>
+    <property name="targetPackage" value="org.example.controller"/>
+    <property name="rest" value="true"/>
+    <property name="respond" value="org.example.Respond"/>
+</plugin>
  ```
 ##### Generate impressions (partial code)
 ```java

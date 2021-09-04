@@ -12,9 +12,9 @@
 ```xml
     <dependencies>
         <dependency>
-            <groupId>com.github.uinio</groupId>
+            <groupId>io.github.mioxs</groupId>
             <artifactId>mybatis-extension-plugin</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.1</version>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
@@ -48,9 +48,9 @@
                     </dependency>
                     <!--mybatis-extension-plugin-->
                     <dependency>
-                        <groupId>com.github.uinio</groupId>
+                        <groupId>io.github.mioxs</groupId>
                         <artifactId>mybatis-extension-plugin</artifactId>
-                        <version>1.4.0</version>
+                        <version>1.4.1</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -76,13 +76,15 @@
 
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
+
 ```xml
- <plugin type="com.github.uinio.mybatis.LombokPlugin">
+
+<plugin type="io.github.mioxs.mybatis.LombokPlugin">
     <property name="data" value="true"/>
     <property name="builder" value="true"/>
     <property name="noArgsConstructor" value="true"/>
     <property name="allArgsConstructor" value="true"/>
- </plugin>
+</plugin>
 ```
 ------
 
@@ -96,12 +98,14 @@
 
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
+
 ```xml
- <plugin type="com.github.uinio.mybatis.DomainPlugin">
+
+<plugin type="io.github.mioxs.mybatis.DomainPlugin">
     <property name="serializable" value="true"/>
     <property name="dateSerialize" value="true"/>
     <property name="json" value="jackson"/>
- </plugin>
+</plugin>
 ```
 ------
 > RepositoryPlugin (数据访问对象DAO扩展)
@@ -112,11 +116,13 @@
 | repository | null | Dao父类,默认为null |
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
+
 ```xml
- <plugin type="com.github.uinio.mybatis.RepositoryPlugin">
-   <property name="suppressAllComments" value="true"/>
-   <property name="repository" value="org.example.MybatisRepository"/>
- </plugin>
+
+<plugin type="io.github.mioxs.mybatis.RepositoryPlugin">
+    <property name="suppressAllComments" value="true"/>
+    <property name="repository" value="org.example.MybatisRepository"/>
+</plugin>
 ```
 ------
 > ServicePlugin (Service生成)
@@ -129,13 +135,15 @@
 | basicServiceImpl |  null  | serviceImpl父类, 默认为null |
  ##### 示例
  * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
+
  ```xml
-  <plugin type="com.github.uinio.mybatis.ServicePlugin">
-     <property name="targetProject" value="src/main/java"/>
-     <property name="targetPackage" value="org.example.service"/>
-     <property name="basicService" value="org.example.BaseService"/>
-     <property name="basicServiceImpl" value="org.example.BaseServiceImpl"/>
-  </plugin>
+
+<plugin type="io.github.mioxs.mybatis.ServicePlugin">
+    <property name="targetProject" value="src/main/java"/>
+    <property name="targetPackage" value="org.example.service"/>
+    <property name="basicService" value="org.example.BaseService"/>
+    <property name="basicServiceImpl" value="org.example.BaseServiceImpl"/>
+</plugin>
  ```
 ------
 > ControllerPlugin (Controller生成)
@@ -148,13 +156,15 @@
 | respond |  null  | controller返回结果集 默认为null |
 ##### 示例
 * \<plugin>元素是\<context>元素的子元素。可以在上下文中指定任意数量的插件。
+
  ```xml
-  <plugin type="com.github.uinio.mybatis.ControllerPlugin">
-      <property name="targetProject" value="src/main/java"/>
-      <property name="targetPackage" value="org.example.controller"/>
-      <property name="rest" value="true"/>
-      <property name="respond" value="org.example.Respond"/>
-  </plugin>
+
+<plugin type="io.github.mioxs.mybatis.ControllerPlugin">
+    <property name="targetProject" value="src/main/java"/>
+    <property name="targetPackage" value="org.example.controller"/>
+    <property name="rest" value="true"/>
+    <property name="respond" value="org.example.Respond"/>
+</plugin>
  ```
 ##### 生成展示(部份代码)
 ```java

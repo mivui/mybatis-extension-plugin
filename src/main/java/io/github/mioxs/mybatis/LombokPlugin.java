@@ -1,4 +1,4 @@
-package com.github.uinio.mybatis;
+package io.github.mioxs.mybatis;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
@@ -9,10 +9,6 @@ import org.mybatis.generator.internal.util.StringUtility;
 
 import java.util.List;
 import java.util.Properties;
-
-/**
- * @author uinio
- */
 
 public class LombokPlugin extends PluginAdapter {
 

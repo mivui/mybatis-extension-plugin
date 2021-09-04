@@ -1,17 +1,14 @@
-package com.github.uinio.mybatis.utils;
+package io.github.mioxs.mybatis.utils;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.config.GeneratedKey;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-
-/**
- * @author uinio
- */
 
 public class PluginUtils {
 
@@ -20,8 +17,9 @@ public class PluginUtils {
     }
 
     public static Optional<FullyQualifiedJavaType> primaryKeyType(IntrospectedTable introspectedTable) {
-        if (Objects.nonNull(introspectedTable.getGeneratedKey())) {
-            String primaryKey = introspectedTable.getGeneratedKey().getColumn();
+        Optional<GeneratedKey> generatedKey = introspectedTable.getGeneratedKey();
+        if (generatedKey.isPresent()) {
+            String primaryKey = generatedKey.get().getColumn();
             Optional<IntrospectedColumn> optional = introspectedTable.getColumn(primaryKey);
             if (optional.isPresent()) {
                 IntrospectedColumn keyColumn = optional.get();
@@ -32,8 +30,9 @@ public class PluginUtils {
     }
 
     public static Optional<String> primaryKeyName(IntrospectedTable introspectedTable) {
-        if (Objects.nonNull(introspectedTable.getGeneratedKey())) {
-            String primaryKey = introspectedTable.getGeneratedKey().getColumn();
+        Optional<GeneratedKey> generatedKey = introspectedTable.getGeneratedKey();
+        if (generatedKey.isPresent()) {
+            String primaryKey = generatedKey.get().getColumn();
             Optional<IntrospectedColumn> optional = introspectedTable.getColumn(primaryKey);
             if (optional.isPresent()) {
                 IntrospectedColumn keyColumn = optional.get();
@@ -53,7 +52,7 @@ public class PluginUtils {
     public static void removeGeneratedAnnotation(Object object) {
         if (Objects.nonNull(object)) {
             if (object instanceof TopLevelClass) {
-                TopLevelClass topLevelClass = ( TopLevelClass ) object;
+                TopLevelClass topLevelClass = (TopLevelClass) object;
                 Set<FullyQualifiedJavaType> importedTypes = topLevelClass.getImportedTypes();
                 if (Objects.nonNull(importedTypes) && !importedTypes.isEmpty()) {
                     importedTypes.removeIf(importedType -> Objects.equals(importedType.getFullyQualifiedName(), "javax.annotation.Generated"));
@@ -72,7 +71,7 @@ public class PluginUtils {
                     actionRemoveGeneratedAnnotation(innerClasses);
                 }
             } else if (object instanceof Interface) {
-                Interface anInterface = ( Interface ) object;
+                Interface anInterface = (Interface) object;
                 Set<FullyQualifiedJavaType> importedTypes = anInterface.getImportedTypes();
                 if (Objects.nonNull(importedTypes) && !importedTypes.isEmpty()) {
                     importedTypes.removeIf(importedType -> Objects.equals(importedType.getFullyQualifiedName(), "javax.annotation.Generated"));
@@ -99,7 +98,7 @@ public class PluginUtils {
         if (Objects.nonNull(objects) && !objects.isEmpty()) {
             for (Object object : objects) {
                 if (object instanceof Method) {
-                    Method method = ( Method ) object;
+                    Method method = (Method) object;
                     List<String> annotations = method.getAnnotations();
                     if (Objects.nonNull(annotations) && !annotations.isEmpty()) {
                         for (int i = 0; i < annotations.size(); i++) {
@@ -110,7 +109,7 @@ public class PluginUtils {
                         }
                     }
                 } else if (object instanceof Field) {
-                    Field field = ( Field ) object;
+                    Field field = (Field) object;
                     List<String> annotations = field.getAnnotations();
                     if (Objects.nonNull(annotations) && !annotations.isEmpty()) {
                         for (int i = 0; i < annotations.size(); i++) {
@@ -121,7 +120,7 @@ public class PluginUtils {
                         }
                     }
                 } else if (object instanceof InnerClass) {
-                    InnerClass innerClass = ( InnerClass ) object;
+                    InnerClass innerClass = (InnerClass) object;
                     List<String> annotations = innerClass.getAnnotations();
                     if (Objects.nonNull(annotations) && !annotations.isEmpty()) {
                         for (int i = 0; i < annotations.size(); i++) {

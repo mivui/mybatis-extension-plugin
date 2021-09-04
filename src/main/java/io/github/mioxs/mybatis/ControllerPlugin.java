@@ -1,6 +1,6 @@
-package com.github.uinio.mybatis;
+package io.github.mioxs.mybatis;
 
-import com.github.uinio.mybatis.utils.PluginUtils;
+import io.github.mioxs.mybatis.utils.PluginUtils;
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -10,11 +10,6 @@ import org.mybatis.generator.internal.util.StringUtility;
 
 import java.util.*;
 
-import static com.github.uinio.mybatis.utils.PluginUtils.restfulMethod;
-
-/**
- * @author uinio
- */
 
 public class ControllerPlugin extends PluginAdapter {
 
@@ -135,7 +130,7 @@ public class ControllerPlugin extends PluginAdapter {
                     //findAll
                     Method findAllMethod = new Method("findAll");
                     findAllMethod.addAnnotation("@GetMapping(\"findAll\")");
-                    restfulMethod(findAllMethod, rest);
+                    PluginUtils.restfulMethod(findAllMethod, rest);
                     findAllMethod.setReturnType(respondJavaType);
                     findAllMethod.addBodyLine("return  null;");
                     controllerClass.addMethod(findAllMethod);
@@ -143,7 +138,7 @@ public class ControllerPlugin extends PluginAdapter {
                     Method findByIdMethod = new Method("findById");
                     findByIdMethod.setReturnType(respondJavaType);
                     findByIdMethod.addAnnotation("@GetMapping(\"findById/{" + primaryKeyName + "}\")");
-                    restfulMethod(findByIdMethod, rest);
+                    PluginUtils.restfulMethod(findByIdMethod, rest);
                     Parameter idParameter = new Parameter(primaryKeyType, primaryKeyName);
                     idParameter.addAnnotation("@PathVariable");
                     findByIdMethod.addParameter(idParameter);
@@ -153,7 +148,7 @@ public class ControllerPlugin extends PluginAdapter {
                     Method saveMethod = new Method("save");
                     saveMethod.setReturnType(respondJavaType);
                     saveMethod.addAnnotation("@PostMapping(\"save\")");
-                    restfulMethod(saveMethod, rest);
+                    PluginUtils.restfulMethod(saveMethod, rest);
                     Parameter saveParameter = new Parameter(new FullyQualifiedJavaType(recordType), "record");
                     saveParameter.addAnnotation("@RequestBody");
                     saveMethod.addParameter(saveParameter);
@@ -163,7 +158,7 @@ public class ControllerPlugin extends PluginAdapter {
                     Method saveBatchMethod = new Method("saveBatch");
                     saveBatchMethod.setReturnType(respondJavaType);
                     saveBatchMethod.addAnnotation("@PostMapping(\"saveBatch\")");
-                    restfulMethod(saveBatchMethod, rest);
+                    PluginUtils.restfulMethod(saveBatchMethod, rest);
                     FullyQualifiedJavaType listInstance = FullyQualifiedJavaType.getNewListInstance();
                     listInstance.addTypeArgument(new FullyQualifiedJavaType(recordType));
                     Parameter saveBatchMethodParameter = new Parameter(listInstance, "records");
@@ -175,7 +170,7 @@ public class ControllerPlugin extends PluginAdapter {
                     Method updateMethod = new Method("update");
                     updateMethod.setReturnType(respondJavaType);
                     updateMethod.addAnnotation("@PutMapping(\"update\")");
-                    restfulMethod(updateMethod, rest);
+                    PluginUtils.restfulMethod(updateMethod, rest);
                     Parameter updateParameter = new Parameter(new FullyQualifiedJavaType(recordType), "record");
                     updateParameter.addAnnotation("@RequestBody");
                     updateMethod.addParameter(saveParameter);
@@ -185,7 +180,7 @@ public class ControllerPlugin extends PluginAdapter {
                     Method updateBatchMethod = new Method("updateBatch");
                     updateBatchMethod.setReturnType(respondJavaType);
                     updateBatchMethod.addAnnotation("@PatchMapping(\"updateBatch\")");
-                    restfulMethod(updateBatchMethod, rest);
+                    PluginUtils.restfulMethod(updateBatchMethod, rest);
                     FullyQualifiedJavaType newListInstance = FullyQualifiedJavaType.getNewListInstance();
                     newListInstance.addTypeArgument(new FullyQualifiedJavaType(recordType));
                     Parameter updateBatchParameter = new Parameter(newListInstance, "records");
@@ -197,7 +192,7 @@ public class ControllerPlugin extends PluginAdapter {
                     Method deleteMethod = new Method("delete");
                     deleteMethod.setReturnType(respondJavaType);
                     deleteMethod.addAnnotation("@DeleteMapping(\"delete/{" + primaryKeyName + "}\")");
-                    restfulMethod(deleteMethod, rest);
+                    PluginUtils.restfulMethod(deleteMethod, rest);
                     Parameter deleteIdParameter = new Parameter(primaryKeyType, primaryKeyName);
                     deleteIdParameter.addAnnotation("@PathVariable");
                     deleteMethod.addParameter(deleteIdParameter);
@@ -207,7 +202,7 @@ public class ControllerPlugin extends PluginAdapter {
                     Method deleteBatchMethod = new Method("deleteBatch");
                     deleteBatchMethod.setReturnType(respondJavaType);
                     deleteBatchMethod.addAnnotation("@DeleteMapping(\"deleteBatch/{" + primaryKeyName + "s}\")");
-                    restfulMethod(deleteBatchMethod, rest);
+                    PluginUtils.restfulMethod(deleteBatchMethod, rest);
                     Parameter deleteBatchParameter = new Parameter(primaryKeyType, "[] " + primaryKeyName + "s");
                     deleteBatchParameter.addAnnotation("@PathVariable");
                     deleteBatchMethod.addParameter(deleteBatchParameter);
@@ -216,7 +211,7 @@ public class ControllerPlugin extends PluginAdapter {
                     //page
                     Method pageMethod = new Method("page");
                     pageMethod.addAnnotation("@GetMapping(\"page\")");
-                    restfulMethod(pageMethod, rest);
+                    PluginUtils.restfulMethod(pageMethod, rest);
                     pageMethod.setReturnType(respondJavaType);
                     Parameter pageNum = new Parameter(new FullyQualifiedJavaType("int"), "pageNum");
                     pageNum.addAnnotation("@RequestParam(defaultValue = \"1\")");

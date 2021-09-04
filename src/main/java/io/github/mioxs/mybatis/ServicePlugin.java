@@ -1,5 +1,6 @@
-package com.github.uinio.mybatis;
+package io.github.mioxs.mybatis;
 
+import io.github.mioxs.mybatis.utils.PluginUtils;
 import org.mybatis.generator.api.GeneratedJavaFile;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
@@ -10,12 +11,6 @@ import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.config.PropertyRegistry;
 
 import java.util.*;
-
-import static com.github.uinio.mybatis.utils.PluginUtils.primaryKeyType;
-
-/**
- * @author uinio
- */
 
 public class ServicePlugin extends PluginAdapter {
 
@@ -63,7 +58,7 @@ public class ServicePlugin extends PluginAdapter {
                 //接口添加泛型格式BaseService<实体,主键类型>
                 serviceInterface.addImportedType(new FullyQualifiedJavaType(recordType));
                 interfacePackage.addTypeArgument(new FullyQualifiedJavaType(recordType));
-                Optional<FullyQualifiedJavaType> optional = primaryKeyType(introspectedTable);
+                Optional<FullyQualifiedJavaType> optional = PluginUtils.primaryKeyType(introspectedTable);
                 if (optional.isPresent()) {
                     FullyQualifiedJavaType javaType = optional.get();
                     if (javaType.isExplicitlyImported()) {
@@ -90,7 +85,7 @@ public class ServicePlugin extends PluginAdapter {
                 FullyQualifiedJavaType javaType = new FullyQualifiedJavaType(serviceImplPackage[serviceImplPackage.length - 1]);
                 serviceImplClass.addImportedType(recordType);
                 javaType.addTypeArgument(new FullyQualifiedJavaType(recordType));
-                Optional<FullyQualifiedJavaType> optional = primaryKeyType(introspectedTable);
+                Optional<FullyQualifiedJavaType> optional = PluginUtils.primaryKeyType(introspectedTable);
                 if (optional.isPresent()) {
                     FullyQualifiedJavaType qualifiedJavaType = optional.get();
                     if (qualifiedJavaType.isExplicitlyImported()) {

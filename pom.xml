@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.uinio</groupId>
+    <groupId>io.github.mioxs</groupId>
     <artifactId>mybatis-extension-plugin</artifactId>
-    <version>1.4.0</version>
+    <version>1.4.1</version>
 
     <name>mybatis-extension-plugin</name>
     <description>mybatis-extension-plugin</description>
-    <url>https://github.com/uinio/mybatis-extension-plugin</url>
+    <url>https://github.com/mioxs/mybatis-extension-plugin</url>
 
     <licenses>
         <license>
@@ -20,20 +20,20 @@
 
     <developers>
         <developer>
-            <name>lvXiaoBu</name>
+            <name>mioxs</name>
             <email>lv_xiao_bu@qq.com</email>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:uinio/mybatis-extension-plugin.git</connection>
-        <developerConnection>scm:git:git@github.com:uinio/mybatis-extension-plugin.git</developerConnection>
-        <url>git@github.com:uinio/mybatis-extension-plugin.git</url>
+        <connection>scm:git:git@github.com:mioxs/mybatis-extension-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:mioxs/mybatis-extension-plugin.git</developerConnection>
+        <url>git@github.com:mioxs/mybatis-extension-plugin.git</url>
     </scm>
 
     <issueManagement>
         <system>Github Issue</system>
-        <url>https://github.com/uinio/mybatis-extension-plugin/issues</url>
+        <url>https://github.com/mioxs/mybatis-extension-plugin/issues</url>
     </issueManagement>
 
     <properties>
@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.1</version>
         </dependency>
     </dependencies>
 
@@ -55,14 +55,14 @@
         <profile>
             <id>release</id>
             <distributionManagement>
-                <repository>
-                    <id>oss</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
                 <snapshotRepository>
-                    <id>oss</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                    <id>ossrh</id>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
                 </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
             </distributionManagement>
             <build>
                 <plugins>
@@ -74,7 +74,7 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <phase>package</phase>
+                                <id>attach-sources</id>
                                 <goals>
                                     <goal>jar-no-fork</goal>
                                 </goals>
@@ -84,7 +84,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.2.0</version>
+                        <version>3.4.1</version>
                         <configuration>
                             <additionalOptions>
                                 <additionalOption>-Xdoclint:none</additionalOption>
@@ -92,7 +92,7 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <phase>package</phase>
+                                <id>attach-javadocs</id>
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
@@ -105,6 +105,7 @@
                         <version>1.6</version>
                         <executions>
                             <execution>
+                                <id>sign-artifacts</id>
                                 <phase>verify</phase>
                                 <goals>
                                     <goal>sign</goal>
@@ -116,6 +117,5 @@
             </build>
         </profile>
     </profiles>
-
 
 </project>
