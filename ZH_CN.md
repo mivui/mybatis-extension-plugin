@@ -14,7 +14,7 @@
         <dependency>
             <groupId>io.github.mioxs</groupId>
             <artifactId>mybatis-extension-plugin</artifactId>
-            <version>1.4.1</version>
+            <version>1.4.2</version>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
@@ -50,7 +50,7 @@
                     <dependency>
                         <groupId>io.github.mioxs</groupId>
                         <artifactId>mybatis-extension-plugin</artifactId>
-                        <version>1.4.1</version>
+                        <version>1.4.2</version>
                     </dependency>
                 </dependencies>
             </plugin>
