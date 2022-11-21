@@ -67,9 +67,10 @@ public class ServicePlugin extends PluginAdapter {
                     interfacePackage.addTypeArgument(javaType);
                 }
                 serviceInterface.addSuperInterface(interfacePackage);
-                GeneratedJavaFile javaFile = new GeneratedJavaFile(serviceInterface, targetProject,
-                        context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING),
-                        context.getJavaFormatter());
+                GeneratedJavaFile javaFile = new GeneratedJavaFile(serviceInterface, targetProject, context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING), context.getJavaFormatter());
+                files.add(javaFile);
+            } else {
+                GeneratedJavaFile javaFile = new GeneratedJavaFile(serviceInterface, targetProject, context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING), context.getJavaFormatter());
                 files.add(javaFile);
             }
             if (Objects.nonNull(basicServiceImpl) && Objects.nonNull(basicService)) {
@@ -98,9 +99,7 @@ public class ServicePlugin extends PluginAdapter {
                 //Add implementation class
                 serviceImplClass.addImportedType(servicePackage);
                 serviceImplClass.addSuperInterface(new FullyQualifiedJavaType(className + "Service"));
-                GeneratedJavaFile javaFile = new GeneratedJavaFile(serviceImplClass, targetProject,
-                        context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING),
-                        context.getJavaFormatter());
+                GeneratedJavaFile javaFile = new GeneratedJavaFile(serviceImplClass, targetProject, context.getProperty(PropertyRegistry.CONTEXT_JAVA_FILE_ENCODING), context.getJavaFormatter());
                 files.add(javaFile);
             }
             return files;
