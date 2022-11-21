@@ -25,7 +25,7 @@ English |  [中文](./ZH_CN.md)
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>1.4.1</version>
                 <executions>
                     <execution>
                         <id>Generate MyBatis Artifacts</id>
