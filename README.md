@@ -43,7 +43,7 @@ English |  [中文](./ZH_CN.md)
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.21</version>
+                        <version>8.0.31</version>
                     </dependency>
                     <!--mybatis-extension-plugin-->
                     <dependency>
