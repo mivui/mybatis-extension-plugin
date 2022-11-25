@@ -10,51 +10,53 @@ English |  [中文](./ZH_CN.md)
 ------
 ##### Add dependency (example)
 ```xml
-    <dependencies>
-        <dependency>
-            <groupId>io.github.mioxs</groupId>
-            <artifactId>mybatis-extension-plugin</artifactId>
-            <version>1.4.2</version>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.4.1</version>
-                <executions>
-                    <execution>
-                        <id>Generate MyBatis Artifacts</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <verbose>true</verbose>
-                    <overwrite>true</overwrite>
-                </configuration>
-                <dependencies>
-                    <!--mysql As an example-->
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>8.0.31</version>
-                    </dependency>
-                    <!--mybatis-extension-plugin-->
-                    <dependency>
-                        <groupId>io.github.mioxs</groupId>
-                        <artifactId>mybatis-extension-plugin</artifactId>
-                        <version>1.4.2</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+<dependencies>
+  <dependency>
+    <groupId>io.github.mioxs</groupId>
+    <artifactId>mybatis-extension-plugin</artifactId>
+    <version>1.4.2</version>
+    <scope>runtime</scope>
+    <optional>true</optional>
+  </dependency>
+</dependencies>
+
+<build>
+<plugins>
+  <plugin>
+    <groupId>org.mybatis.generator</groupId>
+    <artifactId>mybatis-generator-maven-plugin</artifactId>
+    <version>1.4.1</version>
+    <executions>
+      <execution>
+        <id>Generate MyBatis Artifacts</id>
+        <phase>deploy</phase>
+        <goals>
+          <goal>generate</goal>
+        </goals>
+      </execution>
+    </executions>
+    <configuration>
+      <verbose>true</verbose>
+      <overwrite>true</overwrite>
+    </configuration>
+    <dependencies>
+      <!--mysql As an example-->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.31</version>
+      </dependency>
+      <!--mybatis-extension-plugin-->
+      <dependency>
+        <groupId>io.github.mioxs</groupId>
+        <artifactId>mybatis-extension-plugin</artifactId>
+        <version>1.4.2</version>
+      </dependency>
+    </dependencies>
+  </plugin>
+</plugins>
+</build>
 ```
 ------
 #### Plugin usage
